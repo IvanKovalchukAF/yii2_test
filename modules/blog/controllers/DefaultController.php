@@ -11,7 +11,6 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 Use yii\data\Pagination;
 
-
 /**
  * DefaultController implements the CRUD actions for Posts model.
  */
@@ -31,10 +30,10 @@ class DefaultController extends Controller
             ],
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create','update','delete'],
+                'only' => ['create', 'update', 'delete'],
                 'rules' => [
                     [
-                        'actions' => ['create','update','delete'],
+                        'actions' => ['create', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -42,7 +41,6 @@ class DefaultController extends Controller
             ],
         ];
     }
-
     /**
      * Lists all Posts models.
      * @return mixed
@@ -50,7 +48,7 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         $allPosts = Posts::find();
-        if ($allPosts){
+        if ($allPosts) {
             $pages = new Pagination(['totalCount' => $allPosts->count(), 'pageSize' => 2]);
             $posts = $allPosts->offset($pages->offset)
                 ->limit($pages->limit)
@@ -60,7 +58,6 @@ class DefaultController extends Controller
             ]);
         }
     }
-
     /**
      * Displays a single Posts model.
      * @param integer $id
@@ -72,7 +69,6 @@ class DefaultController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-
     /**
      * Creates a new Posts model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -81,7 +77,6 @@ class DefaultController extends Controller
     public function actionCreate()
     {
         $model = new Posts();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -90,7 +85,6 @@ class DefaultController extends Controller
             ]);
         }
     }
-
     /**
      * Updates an existing Posts model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -100,7 +94,6 @@ class DefaultController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -109,7 +102,6 @@ class DefaultController extends Controller
             ]);
         }
     }
-
     /**
      * Deletes an existing Posts model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -119,10 +111,8 @@ class DefaultController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
-
     /**
      * Finds the Posts model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

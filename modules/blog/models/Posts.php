@@ -5,7 +5,6 @@ namespace app\modules\blog\models;
 use app\models\User;
 use Yii;
 
-
 /**
  * This is the model class for table "posts".
  *
@@ -24,7 +23,6 @@ class Posts extends \yii\db\ActiveRecord
     {
         return 'posts';
     }
-
     /**
      * @inheritdoc
      */
@@ -38,7 +36,6 @@ class Posts extends \yii\db\ActiveRecord
             [['intro'], 'string', 'max' => 250],
         ];
     }
-
     /**
      * @inheritdoc
      */
